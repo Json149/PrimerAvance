@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Administrar Empleados y Áreas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/Estilios.css" />
+</head>
+<body>
+<div class="container mt-5">
+    <h3>Administración de Empleados y Areas en la Empresa</h3>
+    <div class="content-container">
+        <h2 class="mb-4">Administrar Empleados y Areas</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre Empleado</th>
+                <th>Cargo</th>
+                <th>Área Asignada</th>
+                <th>Alerta Llegadas Tarde</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ui:repeat value="#{combinedBean.listaEmpleados}" var="empleado">
+                <tr>
+                    <td>#{empleado.nombre}</td>
+                    <td>#{empleado.cargo}</td>
+                    <td>#{empleado.areaAsignada}</td>
+                    <td>#{empleado.alertaLlegadasTarde}</td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="bottom-buttons">
+    <h:form>
+        <h:button value="Gestión de Área" outcome="administrarArea" styleClass="btn btn-primary mr-2" />
+        <h:button value="Gestión de Empleado" outcome="AdministrarEmpleado" styleClass="btn btn-primary mr-2" />
+        <h:button value="Cerrar Sesión" outcome="login" styleClass="btn btn-secondary" />
+    </h:form>
+</div>
+</body>
+</html>

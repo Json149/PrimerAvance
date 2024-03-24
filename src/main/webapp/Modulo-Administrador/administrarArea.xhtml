@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Administrar Areas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/Estilios.css" />
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3>Administracion de  Areas en la Empresa</h3>
+    <div class="content-container">
+        <h2 class="mb-4">Administrar Areas</h2>
+        <h:form>
+            <div class="form-group row">
+                <label for="id" class="col-sm-2 col-form-label">ID:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="id" value="#{areaBean.areaSeleccionada.id}" class="form-control" disabled="false" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="nombre" value="#{areaBean.areaSeleccionada.nombre}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                <div class="col-sm-10">
+                    <h:inputTextarea id="descripcion" value="#{areaBean.areaSeleccionada.descripcion}" class="form-control" rows="5" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="supervisor" class="col-sm-2 col-form-label">Supervisor Asignado:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="supervisor" value="#{areaBean.areaSeleccionada.supervisorAsignado}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h:commandButton value="Guardar" action="#{areaBean.guardarArea}" class="btn btn-primary mr-2" />
+                    <h:commandButton value="Cancelar" action="#{areaBean.cancelar}" class="btn btn-secondary" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+    <div class="container mt-5">
+        <div class="content-container">
+            <h2>Areas Existentes</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Supervisor Asignado</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{areaBean.listaAreas}" var="area">
+                    <tr>
+                        <td>#{area.id}</td>
+                        <td>#{area.nombre}</td>
+                        <td>#{area.descripcion}</td>
+                        <td>#{area.supervisorAsignado}</td>
+                        <td>
+                            <h:commandButton value="Editar" action="#{areaBean.editarArea(area)}" class="btn btn-primary" />
+                            <h:commandButton value="Eliminar" action="#{areaBean.eliminarArea(area)}" class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br></br>
+    <br></br>
+    <br></br>
+</div>
+<div class="bottom-buttons">
+    <h:form>
+        <h:button value="Administracion Empresa" outcome="Administracion" styleClass="btn btn-primary mr-2" />
+        <h:button value="Gestión de Área" outcome="administrarArea" styleClass="btn btn-primary mr-2" />
+        <h:button value="Gestión de Empleado" outcome="AdministrarEmpleado" styleClass="btn btn-primary mr-2" />
+        <h:button value="Cerrar Sesión" outcome="login" styleClass="btn btn-secondary" />
+
+
+    </h:form>
+</div>
+</body>
+</html>

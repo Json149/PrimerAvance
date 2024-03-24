@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Login </title>
+    <link rel="stylesheet" type="text/css" href="../resources/style.css"/>
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+<br/>
+<h:form>
+    <h2>Login</h2>
+    <h:messages style="color: red;" />
+    <h:panelGrid columns="2" >
+        <h:outputLabel for="username">Usuario:</h:outputLabel>
+        <h:inputText id="username" value="#{loginBean.username}" required="true" />
+
+        <h:outputLabel for="password">Contraseña:</h:outputLabel>
+        <h:inputSecret id="password" value="#{loginBean.password}" required="true" />
+    </h:panelGrid>
+    <br/>
+    <br/>
+        <h:commandButton value="Iniciar Sesión" action="#{loginBean.login}" styleClass="login-button" />
+</h:form>
+</body>
+</html>
+
+

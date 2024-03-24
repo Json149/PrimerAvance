@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Módulo de Empleados</title>
+    <link rel="stylesheet" type="text/css" href="../resources/style.css"/>
+    <script src="../resources/reloj.js"></script>
+</head>
+<body>
+<div class="container1">
+    <form>
+        <div>
+            <img src="../resources/logo.jpg" alt="Logo de la empresa" class="logo" />
+        </div>
+        <div class="clock">
+
+            <h2>Bienvenido, #{loginBean.username}</h2>
+        </div>
+    </form>
+
+</div>
+
+<div class="buttons">
+    <h:form>
+        <h:commandButton value="Marcar Entrada" action="#{empleadoBean.marcarEntrada}" styleClass="button" />
+
+        <h:commandButton value="Marcar Salida" action="#{empleadoBean.marcarSalida}" styleClass="button" />
+
+        <h:commandButton value="Tomar Break" action="#{empleadoBean.tomarBreak}" styleClass="button" />
+
+        <h:commandButton value="Regresar del Break" action="#{empleadoBean.regresarDelBreak}" styleClass="button" />
+
+        <h:commandButton value="Generar Reporte de Llegadas Tardes" action="#{empleadoBean.generarReporteLlegadasTarde}" styleClass="button" />
+
+        <br/>
+    </h:form>
+</div>
+
+</body>
+</html>
+

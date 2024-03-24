@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Administrar Empleados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/Estilios.css" />
+</head>
+<body>
+<div class="container mt-5">
+    <h3>Administración de Empleados en la Empresa</h3>
+    <div class="content-container">
+        <h2 class="mb-4">Administrar Empleados</h2>
+        <h:form>
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="nombre" value="#{empleadoBean.empleadoSeleccionado.nombre}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="edad" class="col-sm-2 col-form-label">Edad:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="edad" value="#{empleadoBean.empleadoSeleccionado.edad}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="direccion" class="col-sm-2 col-form-label">Direccion Residencia:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="direccion" value="#{empleadoBean.empleadoSeleccionado.direccionResidencia}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="telefono" class="col-sm-2 col-form-label">Telefono:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="telefono" value="#{empleadoBean.empleadoSeleccionado.telefono}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Correo Electronico:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="email" value="#{empleadoBean.empleadoSeleccionado.correoElectronico}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="area" class="col-sm-2 col-form-label">Area:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="area" value="#{empleadoBean.empleadoSeleccionado.area}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h:commandButton value="Agregar Empleado" action="#{empleadoBean.agregarEmpleado}" class="btn btn-primary mr-2" />
+
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+    <div class="container mt-5">
+        <div class="content-container">
+            <h2>Empleados Registrados</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Dirrecion Residencia</th>
+                    <th>Telefono</th>
+                    <th>Correo Electronico</th>
+                    <th>Area</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{empleadoBean.listaEmpleados}" var="empleado">
+                    <tr>
+                        <td>#{empleado.nombre}</td>
+                        <td>#{empleado.edad}</td>
+                        <td>#{empleado.direccionResidencia}</td>
+                        <td>#{empleado.telefono}</td>
+                        <td>#{empleado.correoElectronico}</td>
+                        <td>#{empleado.area}</td>
+                        <td>
+                            <h:commandButton value="Editar" action="#{empleadoBean.actualizarEmpleado(empleado)}" class="btn btn-primary" />
+                            <h:commandButton value="Eliminar" action="#{empleadoBean.eliminarEmpleado(empleado)}" class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="bottom-buttons">
+    <h:form>
+        <h:button value="Administracion Empresa" outcome="Administracion" styleClass="btn btn-primary mr-2" />
+        <h:button value="Gestión de Área" outcome="administrarArea" styleClass="btn btn-primary mr-2" />
+        <h:button value="Gestión de Empleado" outcome="AdministrarEmpleado" styleClass="btn btn-primary mr-2" />
+        <h:button value="Cerrar Sesión" outcome="login" styleClass="btn btn-secondary" />
+    </h:form>
+</div>
+</body>
+</html>

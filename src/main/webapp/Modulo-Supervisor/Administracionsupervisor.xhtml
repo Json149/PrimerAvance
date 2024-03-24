@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Módulo de Supervisor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/Estilios.css" />
+</head>
+<body>
+<div class="container mt-5">
+    <h3>Gestión de Empleados</h3>
+    <div class="content-container">
+        <h2 class="mb-4">Administrar Empleados</h2>
+        <h:form>
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="nombre" value="#{supervisorBean.empleadoSeleccionado.nombre}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="edad" class="col-sm-2 col-form-label">Edad:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="edad" value="#{supervisorBean.empleadoSeleccionado.edad}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="direccion" class="col-sm-2 col-form-label">Dirección Residencia:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="direccion" value="#{supervisorBean.empleadoSeleccionado.direccionResidencia}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="telefono" value="#{supervisorBean.empleadoSeleccionado.telefono}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Correo Electrónico:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="email" value="#{supervisorBean.empleadoSeleccionado.correoElectronico}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="area" class="col-sm-2 col-form-label">Área:</label>
+                <div class="col-sm-10">
+                    <h:inputText id="area" value="#{supervisorBean.empleadoSeleccionado.area}" class="form-control" required="true" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h:commandButton value="Agregar Empleado" action="#{supervisorBean.agregarEmpleado}" class="btn btn-primary mr-2" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+    <div class="container mt-5">
+        <div class="content-container">
+            <h2>Empleados Registrados</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Dirección Residencia</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Área</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{supervisorBean.listaEmpleados}" var="empleado">
+                    <tr>
+                        <td>#{empleado.nombre}</td>
+                        <td>#{empleado.edad}</td>
+                        <td>#{empleado.direccionResidencia}</td>
+                        <td>#{empleado.telefono}</td>
+                        <td>#{empleado.correoElectronico}</td>
+                        <td>#{empleado.area}</td>
+                        <td>
+                            <h:commandButton value="Editar" action="#{supervisorBean.actualizarEmpleado(empleado)}" class="btn btn-primary" />
+                            <h:commandButton value="Eliminar" action="#{supervisorBean.eliminarEmpleado(empleado)}" class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3>Generar Reporte</h3>
+    <div class="content-container">
+        <h:form>
+            <div class="form-group row">
+                <label for="periodo" class="col-sm-2 col-form-label">Período:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="periodo" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h:commandButton value="Generar Informe" action="#{supervisorBean.generarInforme}" class="btn btn-primary" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h3>Tickets de Alerta</h3>
+    <div class="content-container">
+        <h:form>
+            <div class="form-group row">
+                <label for="periodoAlerta" class="col-sm-2 col-form-label">Período:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="periodoAlerta" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <h:commandButton value="Mostrar Tickets" action="#{supervisorBean.mostrarTickets}" class="btn btn-primary" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+</div>
+
+<div class="bottom-buttons">
+    <h:form>
+        <h:button value="Cerrar Sesión" outcome="login" styleClass="btn btn-secondary" />
+    </h:form>
+</div>
+</body>
+</html>
+
